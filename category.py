@@ -22,20 +22,22 @@ def dirParser(path):
         "description" : description
     }
     return obj
-def path_to_dict(path):
+def path_to_json(path):
     d = {'name': path}
     if os.path.isdir(path):
         parsedDetails = dirParser(os.path.join(path))
+        location = os.path.join(path)
+        location = location.replace(repoDir,'')
         temp = {
             "description" : parsedDetails["description"],
             "category" : parsedDetails["dirName"],
-            "location" : os.path.join(path)
+            "location" : location
         }
         category.append(temp)
-        [path_to_dict(os.path.join(path,x)) for x in os.listdir(path)]
+        [path_to_json(os.path.join(path,x)) for x in os.listdir(path)]
     return category
 
 
 with open('category.json', 'w') as outfile:
-    json.dump(path_to_dict(repoDir), outfile)
+    json.dump(path_to_json(repoDir), outfile)
     print("done")
