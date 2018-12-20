@@ -38,6 +38,6 @@ def path_to_json(path):
     return category
 
 
-with open('category.json', 'w') as outfile:
+with open('dumps/category.json', 'w') as outfile:
     json.dump(path_to_json(repoDir), outfile)
     print("done")
