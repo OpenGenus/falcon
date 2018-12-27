@@ -9,6 +9,8 @@ def dirParser(path):
     try:
         if dirs[-2]== "test" or dirs[-2] == "src":
             description = dirs[-3] + " " + dirs[-1]
+        elif dirs[-1]== "test" or dirs[-1] == "src":
+            description = dirs[-2]
         else:
             description = dirs[-2] + " " + dirs[-1]
     except:

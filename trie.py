@@ -17,7 +17,7 @@ for data in category:
             catMap[word].append(idx)
     idx= idx +1
 pickle.dump( trie, open( "dumps/trie.p", "wb" ))
-pickle.dump( catMap, open( "dumps/catMap.json","w"))
+pickle.dump( catMap, open( "dumps/catMap.p","wb"))
 # to load back
 # u = pickle.load( open( "trie.p", "rb" ) )  to load back
 # u = pickle.load( open( "dumps/catMap.json", "r" ) )
