@@ -1,13 +1,14 @@
 import pickle
 import collections
 import json
+import sys
 
 trie = pickle.load( open( "dumps/trie.p", "rb" ) )  
 catMap = pickle.load( open( "dumps/catMap.p", "rb" ) )
 category = json.load( open( "dumps/category.json", "r" ) )
 
 
-searchTerm = "greedy algorithms"
+searchTerm = " ".join(sys.argv[1:])
 searchTerms = searchTerm.split()
 results = []
 for terms in searchTerms:
@@ -20,6 +21,8 @@ results = sorted(results, key=lambda x: -counts[x])
 searchResults = []
 [searchResults.append(x) for x in results if x not in searchResults]
 
-print searchResults
 for data in searchResults:
     print category[data]['description']
+
+if len(searchResults)==0:
+    print "No results found for search"
