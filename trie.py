@@ -9,6 +9,7 @@ idx = int(0)
 for data in category:
     description = data["description"]
     for word in description.split():
+        word = word.lower()
         trie[word] =  True
         if catMap.has_key(word):
             catMap[word].append(idx)

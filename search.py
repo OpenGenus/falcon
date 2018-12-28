@@ -12,6 +12,7 @@ searchTerm = " ".join(sys.argv[1:])
 searchTerms = searchTerm.split()
 results = []
 for terms in searchTerms:
+    terms = terms.lower()
     if trie.get(terms):
         for value in catMap[terms]:
             results.append(value)
