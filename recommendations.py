@@ -29,8 +29,9 @@ for r, s in d.items():
     p = r
     while True:
         for k, v in s.items():
-            if k != "test" and k != "src":
-                print k.replace('_',' ')
+            print('(%s,%s) ' % ('ROOT' if p == r else p, k))
+            # if k != "test" and k != "src":
+            #     print k.replace('_',' ')
             if v:
                 q.append((k, v))
         if not q:
