@@ -44,30 +44,65 @@ def getMaxDepth(l):
     maxDepth = max(maxDepth,len(data.split("/")))
   return maxDepth
 
-def getWeightedList(l):
-  maxDepth = getMaxDepth(l)
-  weights =  []
-  for data in l:
-    if(maxDepth == len(data.split("/"))):
-      i=0
-      for words in data.split("/"):
-        weights.append({words:i})
-        i=i+1
-      return weights
-  return weights
-      
+def getMaxDepthofDict(d, level=1):
+    if not isinstance(d, dict) or not d:
+        return level
+    return max(getMaxDepthofDict(d[k], level + 1) for k in d)
+  
 def getPath(element, JSON, path, all_paths):    
   if element in JSON:
     path =  path + element #+ str(JSON[element])
-    print path
+    global childPath
+    childPath = JSON[element]
+    # print(childPath)
+    # print path
     all_paths.append(path)
   for key in JSON:
     if isinstance(JSON[key], dict):
       getPath(element, JSON[key],path + key + '/',all_paths)
 
+def getParentWeightedList(l):
+  maxDepth = getMaxDepth(l)
+  parentWeights =  []
+  for i in range(0,maxDepth):
+    parentWeights.append([])
+  for data in l:
+    i=0
+    for  path in data.split("/"):
+      parentWeights[i].append(path)
+      i=i+1
+  return parentWeights
+
+def getChildWeights():
+  maxDepth = getMaxDepthofDict(childPath)
+  print maxDepth
+  childWeights =  []
+  for i in range(0,maxDepth):
+    childWeights.append([])
+  
+  for r, s in childPath.items():
+    i=0
+    q = []
+    p = r
+    while True:
+        for k, v in s.items():
+            # print('(%s,%s) ' % ('ROOT' if p == r else p, k))
+            # if k != "test" and k != "src":
+            #     print k.replace('_',' ')
+            childWeights[i].append(k)
+            if v:
+                q.append((k, v))
+        if not q:
+                break
+        p, s = q.pop(0)
+  print childWeights
+
 # print(baseDict)
 all_paths = []
-getPath('perceptron',baseDict,'',all_paths)
+
+getPath('artificial_intelligence',baseDict,'',all_paths)
 print(all_paths)
 print(getMaxDepth(all_paths))
-print(getWeightedList(all_paths))
+print(getParentWeightedList(all_paths))
+# print childPath
+getChildWeights()
