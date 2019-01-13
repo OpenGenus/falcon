@@ -6,38 +6,6 @@ dict_add = lambda x, y={}: dict_add(x[:-1], y).setdefault(x[-1], {}) if(x) else 
 baseDict = {}
 map(lambda x: dict_add(x, baseDict), [path['location'].split("/") for path in category])
 
-# #seaches for the required key
-# def findkeys(node, kv):
-#     if isinstance(node, list):
-#         for i in node:
-#             for x in findkeys(i, kv):
-#                yield x
-#     elif isinstance(node, dict):
-#         if kv in node:
-#             yield node[kv]
-#         for j in node.values():
-#             for x in findkeys(j, kv):
-#                 yield x
-
-# results= list(findkeys(baseDict, 'artificial_intelligence'))
-# print baseDict
-# print(results)
-# d = {"results":results[0]}
-# #does a bfs for the formed dictionary
-# for r, s in d.items():
-#     q = []
-#     p = r
-#     while True:
-#         for k, v in s.items():
-#             print('(%s,%s) ' % ('ROOT' if p == r else p, k))
-#             # if k != "test" and k != "src":
-#             #     print k.replace('_',' ')
-#             if v:
-#                 q.append((k, v))
-#         if not q:
-#                 break
-#         p, s = q.pop(0)
-
 def getMaxDepth(l):
   maxDepth = 1
   for data in l:
@@ -49,17 +17,17 @@ def getMaxDepthofDict(d, level=1):
         return level
     return max(getMaxDepthofDict(d[k], level + 1) for k in d)
   
-def getPath(element, JSON, path, all_paths):    
+def getPath(element, JSON, path, allPaths,childPath):    
   if element in JSON:
     path =  path + element #+ str(JSON[element])
-    global childPath
-    childPath = JSON[element]
+    # global childPath
+    childPath.append(JSON[element])
     # print(childPath)
     # print path
-    all_paths.append(path)
+    allPaths.append(path)
   for key in JSON:
     if isinstance(JSON[key], dict):
-      getPath(element, JSON[key],path + key + '/',all_paths)
+      getPath(element, JSON[key],path + key + '/',allPaths,childPath)
 
 def getParentWeightedList(l):
   maxDepth = getMaxDepth(l)
@@ -73,7 +41,7 @@ def getParentWeightedList(l):
       i=i+1
   return parentWeights
 
-def getChildWeights():
+def getChildWeightedList(childPath):
   maxDepth = getMaxDepthofDict(childPath)
   print maxDepth
   childWeights =  []
@@ -95,14 +63,15 @@ def getChildWeights():
         if not q:
                 break
         p, s = q.pop(0)
-  print childWeights
+  return childWeights
 
-# print(baseDict)
-all_paths = []
-
-getPath('artificial_intelligence',baseDict,'',all_paths)
-print(all_paths)
-print(getMaxDepth(all_paths))
-print(getParentWeightedList(all_paths))
+allPaths = []
+childPath=[]
+getPath('artificial_intelligence',baseDict,'',allPaths,childPath)
+childPath = childPath[0]
+print(allPaths)
+print(getMaxDepth(allPaths))
+print(getParentWeightedList(allPaths))
 # print childPath
-getChildWeights()
+childWeights = getChildWeightedList(childPath)
+print childWeights
