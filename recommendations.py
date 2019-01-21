@@ -1,6 +1,30 @@
 import json
+import argparse
+import sys
+import getSearchResults
+
 category = json.load( open( "dumps/category.json", "r" ) )
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--recommend", help='The recommendation term')
+
+args = parser.parse_args()
+
+recTerm = args.recommend
+print recTerm
+
+if recTerm == None:
+  print("please enter a term to get recommendation")
+  sys.exit()
+
+searchResults = getSearchResults.getSearchResults(recTerm,None)
+
+if len(searchResults)==0:
+  print("Nothing to recommend")
+  sys.exit()
+
+recTerm = searchResults[0]['location'].split('/')[-1]
+print recTerm
 #converts filesystem to a nested dict
 dict_add = lambda x, y={}: dict_add(x[:-1], y).setdefault(x[-1], {}) if(x) else y
 baseDict = {}
@@ -42,34 +66,38 @@ def getParentWeightedList(l):
   return parentWeights
 
 def getChildWeightedList(childPath):
-  maxDepth = getMaxDepthofDict(childPath)
-  print maxDepth
-  childWeights =  []
-  for i in range(0,maxDepth):
-    childWeights.append([])
-  
-  for r, s in childPath.items():
-    i=0
-    q = []
-    p = r
-    while True:
-        for k, v in s.items():
-            # print('(%s,%s) ' % ('ROOT' if p == r else p, k))
-            # if k != "test" and k != "src":
-            #     print k.replace('_',' ')
-            childWeights[i].append(k)
-            if v:
-                q.append((k, v))
-        if not q:
-                break
-        p, s = q.pop(0)
-  return childWeights
+  try:
+    maxDepth = getMaxDepthofDict(childPath)
+    print maxDepth
+    childWeights =  []
+    for i in range(0,maxDepth):
+      childWeights.append([])
+    
+    for r, s in childPath.items():
+      i=0
+      q = []
+      p = r
+      while True:
+          for k, v in s.items():
+              # print('(%s,%s) ' % ('ROOT' if p == r else p, k))
+              # if k != "test" and k != "src":
+              #     print k.replace('_',' ')
+              childWeights[i].append(k)
+              if v:
+                  q.append((k, v))
+          if not q:
+                  break
+          p, s = q.pop(0)
+    return childWeights
+  except:
+    return []
 
 
 allPaths = []
 childPath=[]
-getPath('artificial_intelligence',baseDict,'',allPaths,childPath)
-childPath = childPath[0]
+getPath(recTerm,baseDict,'',allPaths,childPath)
+if len(childPath)>0:
+  childPath = childPath[0]
 print(allPaths)
 print(getMaxDepth(allPaths))
 parentWeights = getParentWeightedList(allPaths)
