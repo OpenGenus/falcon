@@ -26,7 +26,7 @@ def getSearchResults(searchTerm,display):
     idx = 1
     if display:
         for data in searchResults:
-            print category[data]['description']
+            # print category[data]['description']
             idx = idx+1
             if idx>int(display):
                 sys.exit()
@@ -34,7 +34,7 @@ def getSearchResults(searchTerm,display):
     results = []
     for data in searchResults:
         results.append(category[data])
-    print results
+    # print results
     return results
 
     # if len(searchResults)==0:
