@@ -10,7 +10,7 @@ category = json.load( open( "dumps/category.json", "r" ) )
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--term", help='The term to look for')
-parser.add_argument("--language", help='type of recommendation can be parent/child/all')
+parser.add_argument("--language", help='enter the language extension')
 
 args = parser.parse_args()
 term = args.term
