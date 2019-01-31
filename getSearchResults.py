@@ -9,7 +9,7 @@ catMap = pickle.load( open( "dumps/catMap.p", "rb" ) )
 category = json.load( open( "dumps/category.json", "r" ) )
 
 
-def getSearchResults(searchTerm,display):
+def getSearchResults(searchTerm,display=None):
     searchTerms = searchTerm.split()
     results = []
     for terms in searchTerms:
@@ -27,9 +27,10 @@ def getSearchResults(searchTerm,display):
     if display:
         for data in searchResults:
             # print category[data]['description']
+            results.append(category[data])
             idx = idx+1
             if idx>int(display):
-                sys.exit()
+                return results
 
     results = []
     for data in searchResults:
