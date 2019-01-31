@@ -51,5 +51,8 @@ if not len(childPath[0]):
         for code in arr:
             if code.split(".")[-1] == language:
                 print code
-    print "end category"
+else:
+    for results in searchResults:
+        print "similar categories"
+        print results['category']
 
