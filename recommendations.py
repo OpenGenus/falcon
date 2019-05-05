@@ -17,7 +17,7 @@ recTerm = args.recommend
 top = args.top
 types = args.type
 if(types !="parent" and  types !="all" and types !="child" ):
-  print "please enter correct type which can be child/parent/all"
+  print("please enter correct type which can be child/parent/all")
   sys.exit()
 
 if recTerm == None:
@@ -35,7 +35,7 @@ recTerm = searchResults[0]['location'].split('/')[-1]
 #converts filesystem to a nested dict
 dict_add = lambda x, y={}: dict_add(x[:-1], y).setdefault(x[-1], {}) if(x) else y
 baseDict = {}
-map(lambda x: dict_add(x, baseDict), [path['location'].split("/") for path in category])
+list(map(lambda x: dict_add(x, baseDict), [path['location'].split("/") for path in category]))
 
 
 
@@ -48,10 +48,10 @@ if len(childPath)>0:
 # print(getMaxDepth(allPaths))
 recDict = []
 
-print "childPath"
-print childPath
+print("childPath")
+print(childPath)
 if types != "child":
-  print "parent"
+  print("parent")
   parentWeights = recommendationUtils.getParentWeightedList(allPaths)
   maxParentWeight = len(parentWeights)
   for parents in parentWeights:
@@ -72,10 +72,10 @@ if types != "parent":
 
 
 
-finalRecDict = sorted(recDict, key=lambda x: x.values(),reverse=True)
+finalRecDict = sorted(recDict, key=lambda x: list(x.values()),reverse=True)
 if top:
   for i in range(0,int(top)):
-    print(finalRecDict[i])
+    print((finalRecDict[i]))
 else:
   for data in finalRecDict:
-    print data
+    print(data)
