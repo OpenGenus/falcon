@@ -1,8 +1,8 @@
 # Falcon
 
-Falcon is a library which allows you to use the [Cosmos](https://github.com/OpenGenus/cosmos) library in a convenient way. Curently it has features like Search, Recommendation, etc
+Falcon is a library which allows you to use the [Cosmos](https://github.com/OpenGenus/cosmos) library in a convenient way. Currently it has features like Search, Recommendation, etc
 
-This repository is based out in python scripts and is written in python 2.7, Now lets begin with the features.
+This repository is based out in python scripts and is currently ported to python 3.x, Now lets begin with the features.
 
 ##### Clone the Repository
 To Start First we need to clone the cosmos repository using the ```index.py``` file by writing ```python index.py``` command.
