@@ -2,6 +2,7 @@ from git import Repo
 import os
 from pathlib import Path
 
+
 class Cosmos:
     def clone_repo(self):
         p = Path("./cosmos")
@@ -9,7 +10,7 @@ class Cosmos:
             return True
         else:
             gitUrl = "https://github.com/OpenGenus/cosmos.git"
-            repoDir = os.path.dirname(os.path.abspath(__file__)) +"/cosmos"
+            repoDir = os.path.dirname(os.path.abspath(__file__)) + "/cosmos"
 
             try:
                 Repo.clone_from(gitUrl, repoDir)

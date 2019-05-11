@@ -34,16 +34,19 @@ avoid_dirs = ["project", "test", "img", "image", "images"]
 paths = []
 original_paths = []
 for path in pathlib.Path(__file__).parents[0].joinpath("cosmos").glob("code/**/**/*"):
-    if (path.suffix
-            and not any(elem in list(path.parts[1:]) for elem in avoid_dirs)
-            and path.suffix.lower() not in avoid_extensions):
+    if (
+        path.suffix
+        and not any(elem in list(path.parts[1:]) for elem in avoid_dirs)
+        and path.suffix.lower() not in avoid_extensions
+    ):
         original_paths.append(path.parts[1:])
         paths.append(
             Path(
                 suffix=path.suffix.lstrip(".").lower(),
                 group=path.parts[2].replace("-", " ").replace("_", " "),
                 name=path.parts[-2].replace("-", " ").replace("_", " "),
-            ))
+            )
+        )
 
 suffixes = {path.suffix for path in paths}
 suffixes = sorted(suffixes - set(avoid_extensions))
@@ -113,8 +116,11 @@ paths = sorted(paths, key=sort_key)
 def generate_txt():
     global paths, suffixes, name_max_len, suffix_max_len, totals, group_stats, last_group, sort_key
 
-    print("This is the progress list of Cosmos | Updated on: {}".format(
-        datetime.today().strftime("%Y-%m-%d")))
+    print(
+        "This is the progress list of Cosmos | Updated on: {}".format(
+            datetime.today().strftime("%Y-%m-%d")
+        )
+    )
     print()
 
     def print_group_stats():
@@ -173,8 +179,10 @@ def generate_markdown():
     global paths, suffixes, name_max_len, suffix_max_len, totals, group_stats, last_group, sort_key
 
     print(
-        "This is the progress list of [Cosmos](https://github.com/OpenGenus/cosmos/) | Updated on: {}"
-        .format(datetime.today().strftime("%Y-%m-%d")))
+        "This is the progress list of [Cosmos](https://github.com/OpenGenus/cosmos/) | Updated on: {}".format(
+            datetime.today().strftime("%Y-%m-%d")
+        )
+    )
     print()
 
     def print_group_stats():
@@ -182,8 +190,7 @@ def generate_markdown():
             print("| |", end="")
             for suffix in suffixes:
                 print(
-                    " {} |".format(
-                        str(group_stats[suffix]).rjust(suffix_max_len)),
+                    " {} |".format(str(group_stats[suffix]).rjust(suffix_max_len)),
                     end="",
                 )
             print()
@@ -195,10 +202,11 @@ def generate_markdown():
             print()
             category_dir = group.replace(" ", "_")
             print(
-                "# [{}](https://github.com/OpenGenus/cosmos/tree/master/code/{})"
-                .format(group.upper(), category_dir))
-            print(
-                "| {} | ".format(group.upper().ljust(name_max_len)), end="  ")
+                "# [{}](https://github.com/OpenGenus/cosmos/tree/master/code/{})".format(
+                    group.upper(), category_dir
+                )
+            )
+            print("| {} | ".format(group.upper().ljust(name_max_len)), end="  ")
             for suffix in suffixes:
                 print("{} | ".format(suffix.rjust(suffix_max_len)), end="  ")
             print()
@@ -215,9 +223,8 @@ def generate_markdown():
         for x in original_paths:
             if x[-2] == original_name:
                 name_path = "https://github.com/OpenGenus/cosmos/tree/master/{}".format(
-                    "".join([
-                        y + "/" for pos, y in enumerate(x) if pos != len(x) - 1
-                    ]))
+                    "".join([y + "/" for pos, y in enumerate(x) if pos != len(x) - 1])
+                )
                 break
 
         print("| [{}]({}) |".format(name, name_path), end="  ")
@@ -237,9 +244,7 @@ def generate_markdown():
     tot_str = "TOTALS"
     print("| {} |".format(tot_str), end="  ")
     for suffix in suffixes:
-        print(
-            " {} |".format(str(totals[suffix]).rjust(suffix_max_len)),
-            end="  ")
+        print(" {} |".format(str(totals[suffix]).rjust(suffix_max_len)), end="  ")
     print()
     print("| ", end="")
     print("-" * len(tot_str), end=" | ")
@@ -250,14 +255,12 @@ def generate_markdown():
 
 def main():
     parser = argparse.ArgumentParser(
-        description=
-        "Get statstics in txt or markdown. Make sure you are in root of cosmos repo before running"
+        description="Get statstics in txt or markdown. Make sure you are in root of cosmos repo before running"
     )
     parser.add_argument(
         "-f",
         "--format",
-        help=
-        'Ouput can be "txt" for text file and "md" for markdown or "all" for all formats',
+        help='Ouput can be "txt" for text file and "md" for markdown or "all" for all formats',
         default="all",
     )
     results = parser.parse_args()
