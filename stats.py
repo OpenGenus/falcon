@@ -4,7 +4,14 @@ import collections
 import itertools
 import pathlib
 import argparse
+import os
 from datetime import datetime
+from index import Cosmos
+
+c_repo = Cosmos()
+if not c_repo.clone_repo():
+    print("Clone the cosmos repo manually")
+    exit(0)
 
 Path = collections.namedtuple("Entry", ("suffix", "group", "name"))
 avoid_extensions = [
@@ -26,15 +33,15 @@ avoid_extensions = [
 avoid_dirs = ["project", "test", "img", "image", "images"]
 paths = []
 original_paths = []
-for path in pathlib.Path(__file__).parents[1].glob("code/**/**/*"):
+for path in pathlib.Path(__file__).parents[0].joinpath("cosmos").glob("code/**/**/*"):
     if (path.suffix
-            and not any(elem in list(path.parts) for elem in avoid_dirs)
+            and not any(elem in list(path.parts[1:]) for elem in avoid_dirs)
             and path.suffix.lower() not in avoid_extensions):
-        original_paths.append(path.parts)
+        original_paths.append(path.parts[1:])
         paths.append(
             Path(
                 suffix=path.suffix.lstrip(".").lower(),
-                group=path.parts[1].replace("-", " ").replace("_", " "),
+                group=path.parts[2].replace("-", " ").replace("_", " "),
                 name=path.parts[-2].replace("-", " ").replace("_", " "),
             ))
 
