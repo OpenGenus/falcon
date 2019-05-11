@@ -37,21 +37,4 @@ The file ```code.py``` can be used to search the code in a given language in the
 - **term(Required)** : We enter the search term here.
 - **language(Required)** : We enter the language in which we want the final results, the value of the parameter is the extension of language in which code is required.
 
-### Generate List of Implemented Algorithms
-#### What's the stats script?
-The stats script deals with generating a progress list of the cosmos repo, by taking into account all algorithms currently existing in the repo and categorizing them based on the languages used to implement them.
-
-#### How to run?
-**make sure that you're in the cosmos root directory**
-
-#### for generating the output in txt file :-
-```bash
-python3 scripts/stats.py -f txt > ./scripts/STATS.txt
-```
-
-#### for generating the output in md file :-
-```bash
-python3 scripts/stats.py -f md > ./scripts/STATS.md
-```
-
 This library is under development, please feel free to report any issues or request a features.
