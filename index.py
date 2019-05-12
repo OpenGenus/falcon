@@ -1,7 +1,6 @@
 from git import Repo
 import os
 from pathlib import Path
-import argparse
 
 
 class Cosmos:
@@ -24,14 +23,5 @@ class Cosmos:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Clone any git repo")
-    parser.add_argument(
-        "-c",
-        "--clone",
-        help="Repo to be cloned",
-        default="https://github.com/OpenGenus/cosmos.git",
-    )
-    results = parser.parse_args()
-    choice = results.clone
-    cloner = Cosmos(choice)
+    cloner = Cosmos()
     cloner.clone_repo()
