@@ -4,6 +4,11 @@ from . import getSearchResults
 
 
 def main(*args):
+    """
+    similar to grep -ir "term" in cosmos repo,
+    we try to find sentences having the given term
+    and display n-number of results
+    """
     if len(args) == 0:
         parser = argparse.ArgumentParser()
         parser.add_argument("--search", help="The search term")

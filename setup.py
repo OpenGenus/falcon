@@ -1,8 +1,12 @@
-#########################
-######## FALCON #########
-#########################
+"""
+                     ___     __
+ ___  ___  ___ ___  / _/__ _/ /______  ___
+/ _ \/ _ \/ -_) _ \/ _/ _ `/ / __/ _ \/ _ \
+\___/ .__/\__/_//_/_/ \_,_/_/\__/\___/_//_/
+   /_/
 
-# This serves as an installer for openfalcon
+This serves as an installer for openfalcon
+"""
 
 from setuptools import setup
 

@@ -4,12 +4,16 @@ import json
 import sys
 import argparse
 
-trie = pickle.load( open( "dumps/trie.p", "rb" ) )  
-catMap = pickle.load( open( "dumps/catMap.p", "rb" ) )
-category = json.load( open( "dumps/category.json", "r" ) )
+trie = pickle.load(open("dumps/trie.p", "rb"))
+catMap = pickle.load(open("dumps/catMap.p", "rb"))
+category = json.load(open("dumps/category.json", "r"))
 
 
-def getSearchResults(searchTerm,display=None):
+def getSearchResults(searchTerm, display=None):
+    """
+    part of search.py script, which implements
+    functionality similar to grep -ir <term>
+    """
     searchTerms = searchTerm.split()
     results = []
     for terms in searchTerms:
@@ -28,8 +32,8 @@ def getSearchResults(searchTerm,display=None):
         for data in searchResults:
             # print category[data]['description']
             results.append(category[data])
-            idx = idx+1
-            if idx>int(display):
+            idx = idx + 1
+            if idx > int(display):
                 return results
 
     results = []
@@ -40,4 +44,3 @@ def getSearchResults(searchTerm,display=None):
 
     # if len(searchResults)==0:
     #     print "No results found for search"
-
