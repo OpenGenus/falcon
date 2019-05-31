@@ -13,6 +13,7 @@ import argparse as arg
 import sys
 from . import search
 from . import recommendations
+from . import code
 
 
 def init_search_module_args(parser):
@@ -32,10 +33,19 @@ def init_recommendation_module_args(parser):
     )
 
 
+def init_code_module_args(parser):
+    parser.add_argument("--term", help="The term to look for")
+    parser.add_argument("--language", help="Enter the language extension")
+    parser.add_argument(
+        "--control", help="Enter what to do with end file can be save,edit or delete"
+    )
+
+
 def main():
     parser = arg.ArgumentParser("openfalcon")
     init_search_module_args(parser)
     init_recommendation_module_args(parser)
+    init_code_module_args(parser)
     args = parser.parse_args()
 
     if len(sys.argv) == 1:
@@ -50,3 +60,5 @@ def main():
         search.main(args.search, args.results)
     if args.recommend:
         recommendations.main(args.recommend, args.top, args.type)
+    if args.term:
+        code.main(args.term, args.language, args.control)
