@@ -36,8 +36,11 @@ def getSearchResults(searchTerm,display=None):
                 return results
 
     results = []
+	newResults = []
     for data in searchResults:
+		newResults.append(category[data]['description'])
         results.append(category[data])
+		print ("\n".join(newResults))
     # print results
     return results
 
