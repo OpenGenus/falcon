@@ -16,6 +16,15 @@ pipenv shell
 pipenv install
 ```
 
+## Usage
+
+### openfalcon
+You can make use of the openfalcon interface for easily using all the services available in the repo. Start by installing it from root of project.  
+```bash
+pip3 install --user -e .
+```
+now for usage just look up the help or refer the below sections to understand what each of the service can offer.
+
 ##### Clone the Repository
 To start first we need to clone the cosmos repository using the ```index.py``` file by writing ```python3 index.py``` command.
 
