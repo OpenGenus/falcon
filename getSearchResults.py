@@ -12,7 +12,7 @@ category = json.load( open( "dumps/category.json", "r" ) )
 def getSearchResults(searchTerm,display=None):
     searchTerms = searchTerm.split()
     results = []
-	newResults = []
+    newResults = []
     for terms in searchTerms:
         terms = terms.lower()
         if trie.get(terms):
@@ -28,20 +28,19 @@ def getSearchResults(searchTerm,display=None):
     if display:
         for data in searchResults:
             # print category[data]['description']
-			newResults.append(category[data]['description'])
+            newResults.append(category[data]['description'])
             results.append(category[data])
             idx = idx+1
             if idx>int(display):
-				print ("\n".join(newResults))
+                print ("\n".join(newResults))
                 return results
 
     results = []
-	newResults = []
+    newResults = []
     for data in searchResults:
-		newResults.append(category[data]['description'])
+        newResults.append(category[data]['description'])
         results.append(category[data])
-		print ("\n".join(newResults))
-    # print results
+        print ("\n".join(newResults))
     return results
 
     # if len(searchResults)==0:
