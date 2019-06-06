@@ -41,6 +41,13 @@ User can seek recommendation for search terms using the command ```python3 recom
 The file ```code.py``` can be used to search the code in a given language in the complete cosmos directory and can be used to edit/ delete code, can be used using the command ``` python3 code.py --term linear --language cpp ``` , this will open the top file matching with term linear in cpp
 - **term(Required)** : We enter the search term here.
 - **language(Required)** : We enter the language in which we want the final results, the value of the parameter is the extension of language in which code is required.
+- **Results of above command**
+```
+search linear search
+search linear search
+artificial intelligence Linear Regression
+[{'category': 'linear search', 'description': 'search linear search', 'location': '/code/search/src/linear_search'}, {'category': 'Linear Regression', 'description': 'artificial intelligence Linear Regression', 'location': '/code/artificial_intelligence/src/Linear_Regression'}]
+```
 
 ### Generate List of Implemented Algorithms
 #### What's the stats script?
