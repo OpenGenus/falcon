@@ -14,6 +14,7 @@ import sys
 from . import search
 from . import recommendations
 from . import code
+from . import stats
 
 
 def init_search_module_args(parser):
@@ -41,17 +42,29 @@ def init_code_module_args(parser):
     )
 
 
+def init_stats_module_args(parser):
+    parser.add_argument(
+        "-f",
+        "--format",
+        help='Ouput can be "txt" for text file and "md" for markdown or "all" for all formats',
+        default="txt",
+    )
+
+
 def main():
     parser = arg.ArgumentParser("openfalcon")
     init_search_module_args(parser)
     init_recommendation_module_args(parser)
     init_code_module_args(parser)
+    init_stats_module_args(parser)
     args = parser.parse_args()
 
     if len(sys.argv) == 1:
         print("Please refer to help section using openfalcon --help / openfalcon -h")
         sys.exit()
 
+    if args.format:
+        stats.main(args.format)
     if args.search:
         # results arg can only be used when search arg is present
         if args.results and (args.search is None):

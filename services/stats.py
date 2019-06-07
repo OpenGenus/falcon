@@ -253,18 +253,22 @@ def generate_markdown():
     print()
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Get statstics in txt or markdown. Make sure you are in root of cosmos repo before running"
-    )
-    parser.add_argument(
-        "-f",
-        "--format",
-        help='Ouput can be "txt" for text file and "md" for markdown or "all" for all formats',
-        default="all",
-    )
-    results = parser.parse_args()
-    choice = results.format
+def main(*args):
+    if len(args) == 0:
+        parser = argparse.ArgumentParser(
+            description="Get statstics in txt or markdown. Make sure you are in root of cosmos repo before running"
+        )
+        parser.add_argument(
+            "-f",
+            "--format",
+            help='Ouput can be "txt" for text file and "md" for markdown or "all" for all formats',
+            default="txt",
+        )
+        results = parser.parse_args()
+        choice = results.format
+    else:
+        choice = args[0]
+
     if choice == "txt":
         generate_txt()
     elif choice == "md":
