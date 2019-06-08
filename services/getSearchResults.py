@@ -3,10 +3,12 @@ import collections
 import json
 import sys
 import argparse
+import pathlib
 
-trie = pickle.load(open("dumps/trie.p", "rb"))
-catMap = pickle.load(open("dumps/catMap.p", "rb"))
-category = json.load(open("dumps/category.json", "r"))
+ROOT_PATH = pathlib.Path(__file__).parents[1].as_posix()
+trie = pickle.load(open(  ROOT_PATH + "/dumps/trie.p", "rb"))
+catMap = pickle.load(open(ROOT_PATH + "/dumps/catMap.p", "rb"))
+category = json.load(open(ROOT_PATH + "/dumps/category.json", "r"))
 
 
 def getSearchResults(searchTerm, display=None):

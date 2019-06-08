@@ -3,8 +3,10 @@ import argparse
 import sys
 from . import getSearchResults
 from . import recommendationUtils
+import pathlib
 
-category = json.load(open("dumps/category.json", "r"))
+ROOT_PATH = pathlib.Path(__file__).parents[1].as_posix()
+category = json.load(open(ROOT_PATH+"/dumps/category.json", "r"))
 
 
 def get_recommendation(searchResults, recTerm, top, types):
