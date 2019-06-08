@@ -16,8 +16,11 @@ pipenv shell
 pipenv install
 ```
 
-##### Clone the Repository
-To start first we need to clone the cosmos repository using the ```index.py``` file by writing ```python3 index.py``` command.
+##### Clone falcon Repository
+To start first we need to clone the falcon repository using command ```git clone https://github.com/OpenGenus/falcon.git``` or using SSH ```git@github.com:OpenGenus/falcon.git```.
+
+##### Clone cosmos Repository
+Further we need to clone the cosmos repository using the ```index.py``` file by writing ```python3 index.py``` command.
 
 ##### Search For Files
 
