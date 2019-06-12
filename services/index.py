@@ -10,7 +10,7 @@ class Cosmos:
         self.repo_dir = os.path.dirname(os.path.abspath(__file__)) + self.directory
 
     def clone_repo(self):
-        p = Path(self.directory)
+        p = Path(self.repo_dir)
         if p.exists():
             return True
         else:
