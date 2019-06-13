@@ -32,6 +32,9 @@ def init_recommendation_module_args(parser):
 
 
 def init_code_module_args(parser):
+    parser.add_argument(
+        "--code", help="Delete/Edit the code sections", action="store_true"
+    )
     parser.add_argument("--term", help="The term to look for")
     parser.add_argument("--language", help="Enter the language extension")
     parser.add_argument(
@@ -41,8 +44,12 @@ def init_code_module_args(parser):
 
 def init_stats_module_args(parser):
     parser.add_argument(
+        "--stats", help="Generate statstics of Cosmos repo", action="store_true"
+    )
+    parser.add_argument(
         "-f",
         "--format",
+        default="md",
         help='Ouput can be "txt" for text file and "md" for markdown or "all" for all formats',
     )
 
@@ -71,7 +78,7 @@ def main():
         if not c_repo.clone_repo():
             print("Clone the cosmos repo manually")
             exit(0)
-    if args.format:
+    if args.stats:
         stats.main(args.format)
         exit(0)
     if args.search:
@@ -82,5 +89,8 @@ def main():
         search.main(args.search, args.results)
     if args.recommend:
         recommendations.main(args.recommend, args.top, args.type)
-    if args.term:
+    if args.code:
+        if args.term is None or args.language is None or args.control is None:
+            parser.error("--code requires --term --language and --control arguments")
+            sys.exit()
         code.main(args.term, args.language, args.control)
