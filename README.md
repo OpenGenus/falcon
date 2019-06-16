@@ -47,7 +47,7 @@ User can seek recommendation for search terms using the command ```openfalcon --
 - **top(Optional)** : Missing the parameters results in showing of all results and we can enter integers to restrict the number of returned results.
 
 ##### Edit/Delete Code
-The file ```code.py``` can be used to search the code in a given language in the complete cosmos directory and can be used to edit/ delete code, can be used using the command ```openfalcon --term linear --language cpp ``` , this will open the top file matching with term linear in cpp
+The file ```code.py``` can be used to search the code in a given language in the complete cosmos directory and can be used to edit/ delete code, can be used using the command ```openfalcon --code --term linear --language cpp ``` , this will open the top file matching with term linear in cpp
 - **term(Required)** : We enter the search term here.
 - **language(Required)** : We enter the language in which we want the final results, the value of the parameter is the extension of language in which code is required.
 - **Results of above command**
@@ -67,12 +67,12 @@ The stats script deals with generating a progress list of the cosmos repo, by ta
 
 #### for generating the output in txt file :-
 ```bash
-openfalcon -f txt > ./STATS.txt
+openfalcon --stats -f txt > ./STATS.txt
 ```
 
 #### for generating the output in md file :-
 ```bash
-openfalcon -f md > ./STATS.md
+openfalcon --stats -f md > ./STATS.md
 ```
 
 This library is under development, please feel free to report any issues or request a features.
