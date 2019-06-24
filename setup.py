@@ -10,6 +10,9 @@ This serves as an installer for openfalcon
 
 from setuptools import setup
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 # -e,--editable <path/url>
 # Install a project in editable mode (i.e.  setuptools "develop mode") from a local project path.
 setup(
