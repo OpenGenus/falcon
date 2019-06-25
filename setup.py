@@ -13,11 +13,11 @@ from setuptools import setup, find_packages
 # -e,--editable <path/url>
 # Install a project in editable mode (i.e.  setuptools "develop mode") from a local project path.
 setup(
-    name="falcontester",
+    name="openfalcon",
     include_package_data=True,
     packages = ['.'],
     python_requires=">3.5.2",
-    version="0.0.5",
+    version="0.0.1",
     install_requires=["argparse", "gitpython", "pygtrie"],
     entry_points={"console_scripts": ["openfalcon=services.openfalcon:main"]},
 )
