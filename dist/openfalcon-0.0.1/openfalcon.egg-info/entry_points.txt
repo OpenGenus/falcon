@@ -1,0 +1,3 @@
+[console_scripts]
+openfalcon = services.openfalcon:main
+
