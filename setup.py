@@ -14,10 +14,14 @@ from setuptools import setup, find_packages
 # Install a project in editable mode (i.e.  setuptools "develop mode") from a local project path.
 setup(
     name="openfalcon",
-    include_package_data=True,
-    packages = ['.'],
-    python_requires=">3.5.2",
     version="0.0.1",
+    description="Falcon is a library which allows you to use the Cosmos library in a convenient way.",
+    author="Opengenus Foundation",
+    author_email="team@opengenus.org",
+    url="https://github.com/OpenGenus/falcon",
+    python_requires=">3.5.2",
     install_requires=["argparse", "gitpython", "pygtrie"],
     entry_points={"console_scripts": ["openfalcon=services.openfalcon:main"]},
+    include_package_data=True,
+    packages = ['.'],
 )
