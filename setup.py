@@ -13,7 +13,7 @@ from setuptools import setup, find_packages
 # -e,--editable <path/url>
 # Install a project in editable mode (i.e.  setuptools "develop mode") from a local project path.
 setup(
-	name='openfalcon',
+    name='openfalcon',
     version='0.0.1',
     description='Falcon is a library which allows you to use the Cosmos library in a convenient way.',
     author='Opengenus Foundation',
