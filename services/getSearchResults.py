@@ -21,7 +21,7 @@ def getSearchResults(searchTerm, display=None):
     functionality similar to grep -ir <term>
     """
     path = './services'
-    fileName = 'search_output'
+    fileName = 'test'
     searchTerms = searchTerm.split()
     results = []
     newResults = []
@@ -42,12 +42,14 @@ def getSearchResults(searchTerm, display=None):
     if display:
         for data in searchResults:
             #print ("hii")
-            #print (category[data]['description'])
+            print (category[data]['description'])
             newResults.append(category[data]['description'])
             results.append(category[data])
             idx = idx+1
             if idx>int(display):
                 print ("\n".join(newResults))
+                jsonData['numResults'] = display
+                jsonData['results'] = newResults
                 writeToJSONFile(path, fileName, jsonData)
                 return results
 
@@ -58,6 +60,3 @@ def getSearchResults(searchTerm, display=None):
         results.append(category[data])
         print ("\n".join(newResults))
     return results
-
-    # if len(searchResults)==0:
-    #     print "No results found for search"
