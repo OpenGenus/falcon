@@ -43,7 +43,6 @@ def getSearchResults(searchTerm, display=None):
     idx = 1
     if display:
         for data in searchResults:
-            #print ("hii")
             print (category[data]['description'])
             newResults.append(category[data]['description'])
             results.append(category[data])
@@ -65,5 +64,3 @@ def getSearchResults(searchTerm, display=None):
         print ("\n".join(newResults))
     return results
 
-    # if len(searchResults)==0:
-    #     print "No results found for search"
