@@ -4,6 +4,7 @@ import json
 import sys
 import argparse
 import pathlib
+import time
 
 ROOT_PATH = pathlib.Path(__file__).parents[1].as_posix()
 trie = pickle.load(open(  ROOT_PATH + "/dumps/trie.p", "rb"))
@@ -20,6 +21,7 @@ def getSearchResults(searchTerm, display=None):
     part of search.py script, which implements
     functionality similar to grep -ir <term>
     """
+    start = time.time()
     path = './services'
     fileName = 'test'
     searchTerms = searchTerm.split()
@@ -50,6 +52,8 @@ def getSearchResults(searchTerm, display=None):
                 print ("\n".join(newResults))
                 jsonData['numResults'] = display
                 jsonData['results'] = newResults
+                end = time.time()
+                jsonData['timeTaken'] = end - start
                 writeToJSONFile(path, fileName, jsonData)
                 return results
 
@@ -60,3 +64,6 @@ def getSearchResults(searchTerm, display=None):
         results.append(category[data])
         print ("\n".join(newResults))
     return results
+
+    # if len(searchResults)==0:
+    #     print "No results found for search"
