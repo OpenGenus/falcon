@@ -30,6 +30,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.DS_Store
+build/lib
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -128,3 +130,4 @@ dmypy.json
 
 # ignore cosmos repo
 **/cosmos/
+.DS_Store
