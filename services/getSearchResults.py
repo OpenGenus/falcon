@@ -46,7 +46,8 @@ def getSearchResults(searchTerm, display=None):
     for data in searchResults:
         newResults.append(category[data]['description'])
         results.append(category[data])
-        print ("\n".join(newResults))
+        
+    print ("\n".join(newResults))
     return results
 
     # if len(searchResults)==0:
