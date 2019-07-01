@@ -47,6 +47,8 @@ def getSearchResults(searchTerm, display=None):
             idx = idx+1
             if idx>int(display):
                 print ("\n".join(newResults))
+                jsonData['numResults'] = display
+                jsonData['results'] = newResults
                 writeToJSONFile(path, fileName, jsonData)
                 return results
 
