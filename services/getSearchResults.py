@@ -63,6 +63,3 @@ def getSearchResults(searchTerm, display=None):
         results.append(category[data])
         print ("\n".join(newResults))
     return results
-
-    # if len(searchResults)==0:
-    #     print "No results found for search"
