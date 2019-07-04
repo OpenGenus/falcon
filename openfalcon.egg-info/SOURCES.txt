@@ -2,6 +2,7 @@ MANIFEST.in
 Pipfile
 Pipfile.lock
 README.md
+setup.cfg
 setup.py
 data/stats.md
 data/stats.txt

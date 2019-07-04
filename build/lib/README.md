@@ -5,25 +5,16 @@ Falcon is a library which allows you to use the [Cosmos](https://github.com/Open
 This repository is based out in python scripts and is currently ported to python 3.x, Now lets begin with the features.
 
 ## Installation
-Install pipenv and add it to path:  
+Install openfalcon from PyPI using the command:  
 ```bash
-pip3 install --user pipenv
-```
-
-then install the dependencies from the root of project:  
-```bash
-pipenv shell
-pipenv install
+pip3 install openfalcon --user
 ```
 
 ## Usage
 
 ### openfalcon
-You can make use of the openfalcon interface for easily using all the services available in the repo. Start by installing it from root of project.  
-```bash
-pip3 install --user -e .
-```
-now for usage just look up the help or refer the below sections to understand what each of the service can offer.
+You can make use of the openfalcon interface for easily using all the services available in the repo. Start by launching a terminal window.
+Now, for usage just look up the help or refer the below sections to understand what each of the service can offer.
 
 ##### Clone the Repository
 To start first we need to clone the cosmos repository using the ```index.py``` file by writing ```openfalcon --clone``` command.
@@ -75,4 +66,9 @@ openfalcon --stats -f txt > ./STATS.txt
 openfalcon --stats -f md > ./STATS.md
 ```
 
-This library is under development, please feel free to report any issues or request a features.
+## For Contributors
+
+You can find all of the code [here](https://github.com/OpenGenus/falcon).
+The code is present in the build/lib directory. After making any changes, run all the commands starting with the command ```pip3 install --user pipenv``` to test locally.
+
+Please feel free to report any issues or request new features.

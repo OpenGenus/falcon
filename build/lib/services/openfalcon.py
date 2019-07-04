@@ -11,12 +11,18 @@ An interface to all the services in falcon
 
 import argparse as arg
 import sys
+import json
+import time
 from . import search
 from . import recommendations
 from . import code
 from . import stats
 from . import index
 
+def writeToJSONFile(path, fileName, data):
+    target = './' + path + '/' + fileName + '.json'
+    with open(target, 'a+') as fp:
+        json.dump(data, fp)
 
 def init_search_module_args(parser):
     parser.add_argument(
@@ -68,6 +74,15 @@ def main():
     init_stats_module_args(parser)
     init_index_module_args(parser)
     args = parser.parse_args()
+
+    argparse_dict = vars(args)
+    t = time.time()
+    path = './data'
+    fileName = 'log'
+    jsonData = {}
+    jsonData['Time'] = t
+    jsonData['Command'] = argparse_dict
+    writeToJSONFile(path, fileName, jsonData)
 
     if len(sys.argv) == 1:
         print("Please refer to help section using openfalcon --help / openfalcon -h")
