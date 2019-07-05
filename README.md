@@ -69,6 +69,6 @@ openfalcon --stats -f md > ./STATS.md
 ## For Contributors
 
 You can find all of the code [here](https://github.com/OpenGenus/falcon).
-The code is present in the build/lib directory. After making any changes, run all the commands starting with the command ```pip3 install --user pipenv``` to test locally.
+All features code is present in the services directory. After making any changes, run all the commands starting with the command ```pip3 install --user pipenv``` to test locally.
 
 Please feel free to report any issues or request new features.
