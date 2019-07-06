@@ -77,7 +77,7 @@ def main():
 
     argparse_dict = vars(args)
     t = time.time()
-    path = './build/lib'
+    path = './data'
     fileName = 'log'
     jsonData = {}
     jsonData['Time'] = t
