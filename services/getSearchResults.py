@@ -22,7 +22,7 @@ def getSearchResults(searchTerm, display=None):
     functionality similar to grep -ir <term>
     """
     start = time.time()
-    path = './services'
+    path = './falcon'
     fileName = 'search_output'
     searchTerms = searchTerm.split()
     results = []
