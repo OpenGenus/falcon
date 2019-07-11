@@ -19,8 +19,8 @@ from . import code
 from . import stats
 from . import index
 
-def writeToJSONFile(path, fileName, data):
-    target = './' + path + '/' + fileName + '.json'
+def writeToJSONFile(fileName, data):
+    target = fileName + '.json'
     with open(target, 'a+') as fp:
         json.dump(data, fp)
 
@@ -77,12 +77,11 @@ def main():
 
     argparse_dict = vars(args)
     t = time.time()
-    path = '.'
     fileName = 'log'
     jsonData = {}
     jsonData['Time'] = t
     jsonData['Command'] = argparse_dict
-    writeToJSONFile(path, fileName, jsonData)
+    writeToJSONFile(fileName, jsonData)
 
     if len(sys.argv) == 1:
         print("Please refer to help section using openfalcon --help / openfalcon -h")
