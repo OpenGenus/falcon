@@ -30,6 +30,8 @@ code greedy algorithms
 greedy algorithms
 greedy algorithms kruskal minimum spanning tree
 ```
+Also a json file will be created which includes the search term, search results and time neede for search results.
+
 ##### Recommendations
 
 User can seek recommendation for search terms using the command ```openfalcon --recommend artificial --type parent --top 3``` , here we have two options
