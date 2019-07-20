@@ -21,7 +21,6 @@ def getSearchResults(searchTerm, output, display=None):
     part of search.py script, which implements
     functionality similar to grep -ir <term>
     """
-    print(output)
     start = time.time()
     path = './services'
     fileName = 'search_output'
