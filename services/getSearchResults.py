@@ -16,11 +16,12 @@ def writeToJSONFile(path, fileName, data):
     with open(filePathNameWithExt, 'w') as fp:
         json.dump(data, fp)
 
-def getSearchResults(searchTerm, display=None):
+def getSearchResults(searchTerm, output, display=None):
     """
     part of search.py script, which implements
     functionality similar to grep -ir <term>
     """
+    print(output)
     start = time.time()
     path = './services'
     fileName = 'search_output'
@@ -53,7 +54,8 @@ def getSearchResults(searchTerm, display=None):
                 jsonData['results'] = newResults
                 end = time.time()
                 jsonData['timeTaken'] = end - start
-                writeToJSONFile(path, fileName, jsonData)
+                if output == "json":
+                    writeToJSONFile(path, fileName, jsonData)
                 return results
 
     results = []
