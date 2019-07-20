@@ -85,9 +85,9 @@ def main():
     if args.search:
         # results arg can only be used when search arg is present
         if args.results and (args.search is None):
-            parser.error("--results requires --search argument")
+            parser.error("--results requires --search argument --output argument")
             sys.exit()
-        search.main(args.search, args.results)
+        search.main(args.search, args.results, args.output)
     if args.recommend:
         recommendations.main(args.recommend, args.top, args.type)
     if args.code:
