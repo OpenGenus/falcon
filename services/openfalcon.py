@@ -23,6 +23,7 @@ def init_search_module_args(parser):
         "--search", help="Search for occurence of a term in Cosmos", type=str
     )
     parser.add_argument("--results", help="Number of search results", type=int)
+    parser.add_argument("--output", help="Output format", type=str)
 
 
 def init_recommendation_module_args(parser):
