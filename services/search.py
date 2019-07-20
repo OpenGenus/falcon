@@ -25,7 +25,8 @@ def main(*args):
         print("Enter a valid Search Term")
         sys.exit()
 
-    print(getSearchResults.getSearchResults(searchTerm, display, output))
+    print(getSearchResults.getSearchResults(searchTerm, output, display))
+
 
 if __name__ == "__main__":
     main()
