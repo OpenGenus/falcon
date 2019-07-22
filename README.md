@@ -30,10 +30,11 @@ code greedy algorithms
 greedy algorithms
 greedy algorithms kruskal minimum spanning tree
 ```
-
 If you want to save the output of search feature in a json file, then you need to use ```openfalcon --search="greedy algorithms" --results=3 --output=json``` command.
 
-A json file will be created which includes the search term, search results and time needed for search results.
+- **output(Optional)** : Format of output should be entered here. If "json" will be entered then output will be printed on the console and also json file will be created named "search_output.json".
+
+A json file will be created which includes the search term, number of results, search results and time taken for searching the results.
 
 ##### Recommendations
 
