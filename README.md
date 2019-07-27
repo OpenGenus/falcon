@@ -19,6 +19,8 @@ Now, for usage just look up the help or refer the below sections to understand w
 ##### Clone the Repository
 To start first we need to clone the cosmos repository using the ```index.py``` file by writing ```openfalcon --clone``` command.
 
+**Important** : Before using any feature, please make sure that you are in falcon folder.
+
 ##### Search For Files
 
 A simple search for files in the cosmos repo can be done using the command ```openfalcon --search="greedy algorithms" --results=3 ``` here we have two options 
