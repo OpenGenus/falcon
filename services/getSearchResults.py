@@ -55,7 +55,7 @@ def getSearchResults(searchTerm, output, display=None):
                 jsonData['timeTaken'] = end - start
                 if output == "json":
                     writeToJSONFile(path, fileName, jsonData)
-                return results
+                return newResults
 
     results = []
     newResults = []
@@ -64,7 +64,7 @@ def getSearchResults(searchTerm, output, display=None):
         results.append(category[data])
         
     print ("\n".join(newResults))
-    return results
+    return newResults
 
     # if len(searchResults)==0:
     #     print "No results found for search"
