@@ -19,8 +19,6 @@ Now, for usage just look up the help or refer the below sections to understand w
 ##### Clone the Repository
 To start first we need to clone the cosmos repository using the ```index.py``` file by writing ```openfalcon --clone``` command.
 
-**Important** : Before using any feature, please make sure that you are in falcon folder.
-
 ##### Search For Files
 
 A simple search for files in the cosmos repo can be done using the command ```openfalcon --search="greedy algorithms" --results=3 ``` here we have two options 
@@ -32,11 +30,11 @@ code greedy algorithms
 greedy algorithms
 greedy algorithms kruskal minimum spanning tree
 ```
-If you want to save the output of search feature in a json file, then you need to use ```openfalcon --search="greedy algorithms" --results=3 --output=json``` command.
+If you want to have output in json format, then you need to use ```openfalcon --search="greedy algorithms" --results=3 --output=json``` command.
 
-- **output(Optional)** : Format of output should be entered here. If "json" will be entered then output will be printed on the console and also json file will be created named "search_output.json".
+- **output(Optional)** : Format of output should be entered here. If "json" will be entered then simple output along with json format output will be printed on the console.
 
-A json file will be created which includes the search term, number of results, search results and time taken for searching the results.
+A json output will include the search term, number of results, search results and time taken for searching the results.
 
 ##### Recommendations
 
