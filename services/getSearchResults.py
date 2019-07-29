@@ -54,7 +54,9 @@ def getSearchResults(searchTerm, output, display=None):
                 end = time.time()
                 jsonData['timeTaken'] = end - start
                 if output == "json":
-                    writeToJSONFile(path, fileName, jsonData)
+                    print("\n")
+                    print("JSON Format Output : ")
+                    print(jsonData)
                 return newResults
 
     results = []
