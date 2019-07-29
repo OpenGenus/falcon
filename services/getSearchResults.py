@@ -11,19 +11,12 @@ trie = pickle.load(open(  ROOT_PATH + "/dumps/trie.p", "rb"))
 catMap = pickle.load(open(ROOT_PATH + "/dumps/catMap.p", "rb"))
 category = json.load(open(ROOT_PATH + "/dumps/category.json", "r"))
 
-def writeToJSONFile(path, fileName, data):
-    filePathNameWithExt = './' + path + '/' + fileName + '.json'
-    with open(filePathNameWithExt, 'w') as fp:
-        json.dump(data, fp)
-
 def getSearchResults(searchTerm, output, display=None):
     """
     part of search.py script, which implements
     functionality similar to grep -ir <term>
     """
     start = time.time()
-    path = './services'
-    fileName = 'search_output'
     searchTerms = searchTerm.split()
     results = []
     newResults = []
