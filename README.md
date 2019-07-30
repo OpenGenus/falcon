@@ -35,6 +35,15 @@ If you want to have output in json format, then you need to use ```openfalcon --
 - **output(Optional)** : Format of output should be entered here. If "json" will be entered then json format output will be printed on the console.
 
 A json output will include the search term, number of results, search results and time taken for searching the results.
+**Results of above command :**
+```
+{
+    'searchTearm': 'greedy algorithms',
+    'numResults': 3, 
+    'results': ['code greedy algorithms', 'greedy algorithms', 'greedy algorithms kruskal minimum spanning tree'],
+    'timeTaken': 0.0015103816986083984
+}
+```
 
 ##### Recommendations
 
