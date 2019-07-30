@@ -41,15 +41,15 @@ def getSearchResults(searchTerm, output, display=None):
             results.append(category[data])
             idx = idx+1
             if idx>int(display):
-                print ("\n".join(newResults))
                 jsonData['numResults'] = display
                 jsonData['results'] = newResults
                 end = time.time()
                 jsonData['timeTaken'] = end - start
                 if output == "json":
-                    print("\n")
                     print("JSON Format Output : ")
                     print(jsonData)
+                else:
+                    print ("\n".join(newResults))
                 return newResults
 
     results = []
@@ -57,8 +57,16 @@ def getSearchResults(searchTerm, output, display=None):
     for data in searchResults:
         newResults.append(category[data]['description'])
         results.append(category[data])
-        
-    print ("\n".join(newResults))
+
+    jsonData['numResults'] = display
+    jsonData['results'] = newResults
+    end = time.time()
+    jsonData['timeTaken'] = end - start
+    if output == "json":
+        print("JSON Format Output : ")
+        print(jsonData)
+    else:
+        print ("\n".join(newResults))
     return newResults
 
     # if len(searchResults)==0:
