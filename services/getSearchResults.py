@@ -48,9 +48,10 @@ def getSearchResults(searchTerm, output, display=None):
                 if output == "json":
                     print("JSON Format Output : ")
                     print(jsonData)
+                    return jsonData
                 else:
                     print ("\n".join(newResults))
-                return newResults
+                    return newResults
 
     results = []
     newResults = []
@@ -65,9 +66,10 @@ def getSearchResults(searchTerm, output, display=None):
     if output == "json":
         print("JSON Format Output : ")
         print(jsonData)
+        return jsonData
     else:
         print ("\n".join(newResults))
-    return newResults
+        return newResults
 
     # if len(searchResults)==0:
     #     print "No results found for search"
