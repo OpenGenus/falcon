@@ -11,19 +11,12 @@ trie = pickle.load(open(  ROOT_PATH + "/dumps/trie.p", "rb"))
 catMap = pickle.load(open(ROOT_PATH + "/dumps/catMap.p", "rb"))
 category = json.load(open(ROOT_PATH + "/dumps/category.json", "r"))
 
-def writeToJSONFile(path, fileName, data):
-    filePathNameWithExt = './' + path + '/' + fileName + '.json'
-    with open(filePathNameWithExt, 'w') as fp:
-        json.dump(data, fp)
-
-def getSearchResults(searchTerm, display=None):
+def getSearchResults(searchTerm, output, display=None):
     """
     part of search.py script, which implements
     functionality similar to grep -ir <term>
     """
     start = time.time()
-    path = './services'
-    fileName = 'search_output'
     searchTerms = searchTerm.split()
     results = []
     newResults = []
@@ -48,22 +41,35 @@ def getSearchResults(searchTerm, display=None):
             results.append(category[data])
             idx = idx+1
             if idx>int(display):
-                print ("\n".join(newResults))
                 jsonData['numResults'] = display
                 jsonData['results'] = newResults
                 end = time.time()
                 jsonData['timeTaken'] = end - start
-                writeToJSONFile(path, fileName, jsonData)
-                return results
+                if output == "json":
+                    print("JSON Format Output : ")
+                    print(jsonData)
+                    return jsonData
+                else:
+                    print ("\n".join(newResults))
+                    return newResults
 
     results = []
     newResults = []
     for data in searchResults:
         newResults.append(category[data]['description'])
         results.append(category[data])
-        
-    print ("\n".join(newResults))
-    return results
+
+    jsonData['numResults'] = display
+    jsonData['results'] = newResults
+    end = time.time()
+    jsonData['timeTaken'] = end - start
+    if output == "json":
+        print("JSON Format Output : ")
+        print(jsonData)
+        return jsonData
+    else:
+        print ("\n".join(newResults))
+        return newResults
 
     # if len(searchResults)==0:
     #     print "No results found for search"
