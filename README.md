@@ -30,6 +30,21 @@ code greedy algorithms
 greedy algorithms
 greedy algorithms kruskal minimum spanning tree
 ```
+If you want to have output in json format, then you need to use ```openfalcon --search="greedy algorithms" --results=3 --output=json``` command.
+
+- **output(Optional)** : Format of output should be entered here. If "json" will be entered then json format output will be printed on the console.
+
+A json output will include the search term, number of results, search results and time taken for searching the results.
+**Results of above command :**
+```
+{
+    'searchTearm': 'greedy algorithms',
+    'numResults': 3, 
+    'results': ['code greedy algorithms', 'greedy algorithms', 'greedy algorithms kruskal minimum spanning tree'],
+    'timeTaken': 0.0015103816986083984
+}
+```
+
 ##### Recommendations
 
 User can seek recommendation for search terms using the command ```openfalcon --recommend artificial --type parent --top 3``` , here we have two options
